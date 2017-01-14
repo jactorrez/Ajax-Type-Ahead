@@ -15,10 +15,13 @@ function findMatches(wordToMatch, cities){
 	});
 }
 
+//returns given number with commas in appropriate place
 function numberWithCommas(x){
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
+
+//formats suggestion list according to array items that matched given user query
 function displayMatches(){
 	const queryMatches = findMatches(this.value, cities);
 
@@ -34,13 +37,11 @@ function displayMatches(){
 			</li>
 		`;
 	}).join("");
-
+	//injects string return by html variable into node with link to suggestions list
 	suggestList.innerHTML = html;
 }
 
 const searchInputField = document.querySelector('.search');
 const suggestList = document.querySelector('.suggestions');
 
-// searchInputField.addEventListener('change', displayMatches);
-// searchInputField.addEventListener('keyup', displayMatches);
 searchInputField.addEventListener('input', displayMatches);
